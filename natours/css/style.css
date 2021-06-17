@@ -6,3 +6,65 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/*  
+    =======Universal Selector=========
+    Selectors are a rule which "selects" a html element.
+
+    Universal reset -> rewrite (start over) all html elements, because
+    some browsers apply certain attributes by default.
+
+    ======QUESTIONS======
+ Why css requires a comma to separate the selectors, why does that mean
+ and what's the difference with the space.
+*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+/*
+    Font here
+    because the properties of font are inherited.
+    this supposed to have a limited scope for forms and inputs
+    ====QUESTIONS====
+    what is overall
+    why !important and why it's dangerous
+    why not everything it's important
+    why in the body and not in universal or html
+*/
+body {
+  font-family: "Lato", sans-serif !important; /*Cannot be overwritten by other selectors */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+}
+/*
+    == QUESTIONS ==
+    what is viewport
+    why cover
+    how old internet people learnt
+*/
+.header {
+  height: 95vh; /* almost 100% of the width   */
+  background-image: linear-gradient(to right bottom, #7ed56fe8, #28b485e8),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /*
+    It's taking 75% of the viewport height, which is the height of a resized window screen.
+
+    ==QUESTION==
+    Why 100vh over X axis isn't working as 75vh over Y axis.
+  */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
