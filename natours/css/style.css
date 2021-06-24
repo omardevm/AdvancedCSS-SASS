@@ -87,12 +87,14 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
   backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -144,4 +146,62 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+/*
+pseudoclass !== pseudoelements
+link is blue, purple
+*/
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  position: relative;
+  transition: all 0.2s;
+}
+/*hover*/
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+/*click*/
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+/*
+shorten animation -> animation-name,-duration,-timing-function
+        transition -> all .2s
+*/
+/*
+why after needs content empty
+*/
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute; /*always search for the relative reference*/
+  top: 0;
+  left: 0;
+  z-index: -1; /*behind primary class*/
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+/*grow only the pseudo when hover
+transform: scale(1.5);
+*/
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
 }
